@@ -27,3 +27,28 @@ header {
     font-size: 16pt; 
     font-style: italic; 
 }
+
+a {
+    text-decoration: none;
+    color: rgb(0, 99, 0);
+}
+
+a:link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+a:visited {
+    text-decoration: none;
+    color: rgb(17, 7, 155);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+a:active {
+    opacity: 0.3;
+    color: rgb(0, 0, 0);
+}
