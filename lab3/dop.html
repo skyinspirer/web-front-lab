@@ -10,39 +10,42 @@
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
     <style>
-        div.dop div {
-            display: none;
-        }
-        h1:hover+div {
-            display: block;
-        }
-        .dop {
+        .dop{
             width: 300px;
             border: 3px solid rgb(171, 95, 247);
+            border-radius: 20px;
             display: inline-block;
-            vertical-align: top;
             color: rgb(255, 255, 255);
-            text-align: center;
-            border-radius: 7px;
-            padding: 20px; 
-            background-color: rgb(63, 81, 181); 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-            transition: all 0.5s ease; 
+            margin: 10px auto;
+            vertical-align: top;
+            padding: 5px;
             cursor: pointer;
+            box-shadow: 5px 5px 5px black;
+            transition: width 0ms 2s, all 1s 2s;
+            text-align: center;
+            background-color: rgb(63, 81, 181); 
         }
-        .dop h1 {
-            margin: 0; 
+        div.dop div{
+            transition: height 1s 2s, opacity 0.5s 2s;
+            opacity: 0;
+            height: 0;
+            overflow:auto;
         }
-        .dop:hover {
-            padding-left: 10px; 
-            padding-right: 10px; 
-            color: rgb(0, 0, 0); 
-            background-color: rgb(255, 193, 7); 
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
+        .dop:hover div{
+            opacity: 1;
+            height: 350px;
+            transition: height 1s 0.5s, opacity 1s 0.5s;
+        }
+        .dop:hover{
+            width: 100%;
             border-radius: 20px; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); 
+            background-color: rgb(255, 193, 7); 
+            color: rgb(0, 0, 0);
+            transition: width 0ms 0.5s, all 1s 0.5s;
         }
-        .dop:not(:hover) {
-            transition-delay: 2s;
+        main{
+            display: block;
         }
         h1 {
             text-align: center;
