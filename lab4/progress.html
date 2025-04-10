@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        main {
+            background-color: lightblue; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+        }  
+        .okno {
+            text-align: center;
+            border: 7px solid #4b0082; 
+            border-radius: 20px; 
+            height: 250px;
+            background-color: #e6e6fa; 
+            padding: 20px; 
+            position: relative; 
+            margin-top: 170px;
+        }
+        .p2 {
+            width: 380px;
+            height: 32px;
+            background-color: white;
+            border-radius: 5px;
+            border: 2px solid #4b0082;
+            position: relative;
+            margin: auto;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            box-shadow: 2px 2px 5px #0000008c;
+        }
+        .p1 {
+            height: 100%;
+            background-color: #7cfc00;
+            width: 0;
+            transition: 5s;
+            border-radius: 3px;
+        }
+        .s {
+            color: #483d8b;
+            font-size: 36px;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 30px;
+            text-shadow: 2px 2px 5px #0000008c;
+            font-weight: bold;
+        }
+        .button {
+            padding: 10px;
+            border: 3px solid;
+            border-radius: 10px;
+            background-color: #20b2aa(261, 38%, 51%);
+            color: #483d8b;
+            font-size: 23px;
+            font-family: 'Times New Roman', Times, serif;
+            box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+            margin-top: 80px;
+            top: 50%; 
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+        .button:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            background-color: #b3fafa;
+        }
+        .button:active + .p2 .p1 {
+            width: 100%;
+        }
+        .button:active {
+            box-shadow: none; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    
+    <main>
+        <div class="okno">
+            <div class="s"><b>Степень прогресса</b></div>
+            <button class="button">Нажмите и удерживайте</button>
+            <div class="p2">
+                <div class="p1"></div>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
