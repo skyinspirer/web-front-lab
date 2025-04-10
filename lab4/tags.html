@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        .callback {
+            font-size: 180px;
+            position: absolute;
+            left: 600px;
+            top: 300px;
+            color: #f39c12; 
+            transition: 0.5s;
+            rotate: 20deg;
+        }
+
+        .callback:hover {
+            font-size: 210px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(20deg);
+        }
+
+        .promise {
+            font-size: 120px;
+            position: absolute;
+            left: 300px;
+            top: 680px;
+            color: #2980b9; 
+            transition: 0.5s;
+            rotate: 15deg;
+        }
+
+        .promise:hover {
+            font-size: 150px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(15deg);
+        }
+
+        .async {
+            font-size: 160px;
+            position: absolute;
+            left: 200px;
+            top: 450px;
+            color: #27ae60; 
+            transition: 0.5s;
+            rotate: -20deg;
+        }
+
+        .async:hover {
+            font-size: 190px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(70deg);
+        }
+
+        .await {
+            font-size: 110px;
+            position: absolute;
+            left: 600px;
+            top: 120px;
+            color: #e74c3c; 
+            transition: 0.5s;
+            rotate: 60deg;
+        }
+
+        .await:hover {
+            font-size: 140px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(-40deg);
+        }
+
+        .fetch {
+            font-size: 80px;
+            position: absolute;
+            left: 700px;
+            top: 520px;
+            color: #8e44ad; 
+            transition: 0.5s;
+            rotate: 54deg;
+        }
+
+        .fetch:hover {
+            font-size: 110px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(-20deg);
+        }
+
+        .then {
+            font-size: 100px;
+            position: absolute;
+            left: 540px;
+            top: 700px;
+            color: #34495e; 
+            transition: 0.5s;
+            rotate: -34deg;
+        }
+
+        .then:hover {
+            font-size: 130px;
+            text-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(35deg);
+        }
+
+        .catch {
+            font-size: 65px;
+            position: absolute;
+            left: 290px;
+            top: 630px;
+            color: blueviolet;
+            transition: 0.5s;
+            rotate: 74deg;
+        }
+
+        .catch:hover {
+            font-size: 95px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(180deg);
+        }
+
+        .finally {
+            font-size: 110px;
+            position: absolute;
+            left: 1200px;
+            top: 300px;
+            color: brown;
+            transition: 0.5s;
+            rotate: -34deg;
+        }
+
+        .finally:hover {
+            font-size: 140px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(-115deg);
+        }
+
+        .setTimeout {
+            font-size: 115px;
+            position: absolute;
+            left: 1300px;
+            top: 100px;
+            color: #9b6115;
+            transition: 0.5s;
+            rotate: 96deg;
+        }
+
+        .setTimeout:hover {
+            font-size: 145px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(30deg);
+        }
+
+        .setInterval {
+            font-size: 120px;
+            position: absolute;
+            left: 1400px;
+            top: 600px;
+            color: cadetblue;
+            transition: 0.5s;
+            rotate: 62deg;
+        }
+
+        .setInterval:hover {
+            font-size: 150px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(20deg);
+        }
+
+        .eventloop {
+            font-size: 90px;
+            position: absolute;
+            left: 1100px;
+            top: 750px;
+            color: chartreuse;
+            transition: 0.5s;
+            rotate: -47deg;
+        }
+
+        .eventloop:hover {
+            font-size: 120px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(-20deg);
+        }
+
+        .ajax {
+            font-size: 70px;
+            position: absolute;
+            left: 1000px;
+            top: 500px;
+            color: chocolate;
+            transition: 0.5s;
+            rotate: -11deg;
+        }
+
+        .ajax:hover {
+            font-size: 100px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(15deg);
+        }
+
+        .xhr {
+            font-size: 70px;
+            position: absolute;
+            left: 1500px;
+            top: 300px;
+            color: darkkhaki;
+            transition: 0.5s;
+            rotate: 71deg;
+        }
+
+        .xhr:hover {
+            font-size: 100px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .observable {
+            font-size: 170px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            color: darksalmon;
+            transition: 0.5s;
+        }
+
+        .observable:hover {
+            font-size: 200px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(50deg);
+        }
+
+        .generator {
+            font-size: 160px;
+            position: absolute;
+            left: 900px;
+            top: 100px;
+            color: #345207;
+            transition: 0.5s;
+            rotate: 55deg;
+        }
+
+        .generator:hover {
+            font-size: 190px;
+            text-shadow: 5px 5px 8px black;
+            transition: 0.5s;
+            z-index: 1;
+            transform: rotate(10deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    
+
+    <main>
+        <div class="callback">callback</div>
+        <div class="promise">promise</div>
+        <div class="async">async</div>
+        <div class="await">await</div>
+        <div class="fetch">fetch</div>
+        <div class="then">then</div>
+        <div class="catch">catch</div>
+        <div class="finally">finally</div>
+        <div class="setTimeout">setTimeout</div>
+        <div class="setInterval">setInterval</div>
+        <div class="eventloop">eventloop</div>
+        <div class="ajax">ajax</div>
+        <div class="xhr">xhr</div>
+        <div class="observable">observable</div>
+        <div class="generator">generator</div>
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
