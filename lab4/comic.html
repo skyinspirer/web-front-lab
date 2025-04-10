@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        body {
+            text-align: center;
+        }
+        .div {
+            position: relative;
+            display: inline-block;
+        }
+        .img {
+            margin: 0 auto;
+            border-radius: 10px;
+            display: block;
+         }
+        .obl {
+            position: absolute;
+            color: black;
+            opacity: 0;
+            transition: opacity 0.3s transform 0.6s;
+            border: 1px solid black;
+            background-color: #ffffff;
+            box-shadow: 3px 3px 5px hsla(0, 2%, 12%, 0.322);
+            border-radius: 50%;
+        }
+        .obl1 {
+            left: 67%; 
+            top: 57%;
+            height: 30px;
+            width: 50px;
+        }
+        .obl2 {
+            height: 50px;
+            width: 80px;
+            left: 73%; 
+            top: 49%;
+         }
+        .obl3 {
+            left: 81%; 
+            top: 39%;
+            height: 60px;
+            width: 100px;
+        }
+        .obl4 {
+            left: 90%; 
+            top: 23%;
+            height: 100px;
+            width: 150px;
+            line-height: 100px;
+            text-align: center;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 22px;
+         }
+        .div:hover .obl {
+            opacity: 1;
+        }
+        .div:hover .obl1 {
+            transition: 2s;
+            transition-delay: 0.1s;
+        }
+        .div:hover .obl2 {
+            transition: 2s;
+            transition-delay: 0.2s;
+        }
+        .div:hover .obl3 {
+            transition: 2s;
+            transition-delay: 0.3s;
+        }
+        .div:hover .obl4 {
+            transition: 2s;
+            transition-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <header style="text-align: left;">
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    
+    <main>
+        <div class="div">
+            <img src="41.jpg" class="img">
+            <div class="obl obl1"></div>
+            <div class="obl obl2"></div>
+            <div class="obl obl3"></div>
+            <div class="obl obl4">Моя прелесть</div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
