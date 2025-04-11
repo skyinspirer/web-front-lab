@@ -16,7 +16,7 @@
             let a = parseInt (inputA.value);
             let b = parseInt (inputB.value);
             let result = a + b;
-            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+            alert('Сумма чисел ' + a + ' и ' + b + ' равна ' + result);
         }
 
         function showRazn() {
@@ -25,7 +25,7 @@
             let a = parseInt (inputA.value);
             let b = parseInt (inputB.value);
             let result = a - b;
-            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+            alert('Разность чисел ' + a + ' и ' + b + ' равна ' + result);
         }
 
         function showProiz () {
@@ -34,7 +34,7 @@
             let a = parseInt (inputA.value);
             let b = parseInt (inputB.value);
             let result = a * b;
-            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+            alert('Произведение чисел ' + a + ' и ' + b + ' равна ' + result);
         }
 
 
@@ -51,33 +51,50 @@
     </script>
     <style>
         .massage {
-            color: lightgreen;
+            color: rgb(255, 255, 255);
             cursor: pointer;
             display: inline-block;
             border: 3px solid  rgb(83, 18, 75);
             border-radius: 20px;
             background-color: rgb(233, 61, 210);
-            margin: 20px;
+            margin: 10px;
             padding: 20px;
+        }
+        label {
+            color: rgb(252, 252, 252);
+            cursor: pointer;
+            display: inline-block;
+            border: 2px solid  rgb(0, 56, 12);
+            border-radius: 20px;
+            background-color: rgb(62, 196, 1);
+            padding: 15px;
+            margin: 10px;
+        }
+        .l1 {
+            margin-top: 3px;
+        }
+        .l2 {
+            margin-top: 5px;
         }
     </style>
 
 </head>
 <body>
-    <header onclick="showAutor()">
+    <header style="cursor: pointer;" onclick="showAutor()">
         НГТУ, ФБ, Лабораторная работа 5
     </header>
     
 
     <main>
-        <label> Первое число: <input type="number" id="numberA"> </label> <br>
-        <label> Второе число: <input type="number" id="numberB"> </label> <br>
+        <label class="l1"> Первое число: <input type="number" id="numberA"> </label> <br>
+        <label class="l2"> Второе число: <input type="number" id="numberB"> </label> <br>
         <div class="massage" onclick="showSum()" >Найти сумму чисел</div>
         <div class="massage" onclick="showRazn()" >Найти разность чисел чисел</div>
-        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div>        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
+        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div><br> 
+        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
     </main>
 
-    <footer ondblclick="showPrivet()">
+    <footer style="cursor: pointer;" ondblclick="showPrivet()">
         &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
     </footer>
 </body>
