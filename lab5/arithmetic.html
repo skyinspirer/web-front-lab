@@ -18,6 +18,16 @@
         }
 
 
+        function showAutor () {
+            let Autor = 'Автор страницы:\nЦеунов Матвей Евгеньевич';
+            alert(Autor);
+        }
+
+        function showPrivet() {
+            let Privet = 'Приветствую вас на моей странице!\n Хорошего дня'
+            alert(Privet)
+        }
+
     </script>
     <style>
         .massage {
@@ -34,17 +44,17 @@
 
 </head>
 <body>
-    <header>
+    <header onclick="showAutor()">
         НГТУ, ФБ, Лабораторная работа 5
     </header>
     
 
     <main>
         <div class="massage" onclick="showSum()" >Сколько будет 5154+7891?</div>
-        <div class="massage">Узнать, кто автор страницы</div> 
+        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
     </main>
 
-    <footer>
+    <footer ondblclick="showPrivet()">
         &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
     </footer>
 </body>
