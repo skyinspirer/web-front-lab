@@ -34,10 +34,49 @@
             let a = parseInt (inputA.value);
             let b = parseInt (inputB.value);
             let result = a * b;
-            alert('Произведение чисел ' + a + ' и ' + b + ' равна ' + result);
+            alert('Произведение чисел ' + a + ' и ' + b + ' равно ' + result);
         }
 
+        function showOtnosh () {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt (inputA.value);
+            let b = parseInt (inputB.value);
+            if(b == 0) {
+                alert('На ноль делить нельзя');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.backgroundColor = 'orange';
+                return;
+            }
 
+            if(isNaN(a)) {
+                alert('Введите числовое значение в первое поле')
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.backgroundColor = 'orange';
+                return;
+            }
+
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле')
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.backgroundColor = 'orange';
+                return;
+            }
+
+            inputB.style.color='';
+            inputB.style.backgroundColor = '';
+
+            let result = a / b;
+            alert('Отношение чисел ' + a + ' и ' + b + ' равно ' + result);
+        }
+
+        
         function showAutor () {
             let Autor = 'Автор страницы:\nЦеунов Матвей Евгеньевич';
             alert(Autor);
@@ -90,7 +129,8 @@
         <label class="l2"> Второе число: <input type="number" id="numberB"> </label> <br>
         <div class="massage" onclick="showSum()" >Найти сумму чисел</div>
         <div class="massage" onclick="showRazn()" >Найти разность чисел чисел</div>
-        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div><br> 
+        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div>
+        <div class="massage" onclick="showOtnosh()" >Найти отношение чисел чисел</div><br> 
         <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
     </main>
 
