@@ -13,10 +13,27 @@
         function showSum () {
             let inputA = document.getElementById('numberA');
             let inputB = document.getElementById('numberB');
-            
             let a = parseInt (inputA.value);
             let b = parseInt (inputB.value);
             let result = a + b;
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+        function showRazn() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt (inputA.value);
+            let b = parseInt (inputB.value);
+            let result = a - b;
+            alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
+        }
+
+        function showProiz () {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt (inputA.value);
+            let b = parseInt (inputB.value);
+            let result = a * b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
 
@@ -56,7 +73,8 @@
         <label> Первое число: <input type="number" id="numberA"> </label> <br>
         <label> Второе число: <input type="number" id="numberB"> </label> <br>
         <div class="massage" onclick="showSum()" >Найти сумму чисел</div>
-        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
+        <div class="massage" onclick="showRazn()" >Найти разность чисел чисел</div>
+        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div>        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
     </main>
 
     <footer ondblclick="showPrivet()">
