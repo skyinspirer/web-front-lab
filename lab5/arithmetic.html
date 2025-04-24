@@ -34,6 +34,9 @@
                 return;
             }
 
+            inputA.style.color='';
+            inputA.style.backgroundColor = '';
+
             inputB.style.color='';
             inputB.style.backgroundColor = '';
 
@@ -65,6 +68,9 @@
                 return;
             }
 
+            inputA.style.color='';
+            inputA.style.backgroundColor = '';
+
             inputB.style.color='';
             inputB.style.backgroundColor = '';
 
@@ -95,6 +101,9 @@
                 inputB.style.backgroundColor = 'orange';
                 return;
             }
+
+            inputA.style.color='';
+            inputA.style.backgroundColor = '';
 
             inputB.style.color='';
             inputB.style.backgroundColor = '';
@@ -134,6 +143,9 @@
                 inputB.style.backgroundColor = 'orange';
                 return;
             }
+
+            inputA.style.color='';
+            inputA.style.backgroundColor = '';
 
             inputB.style.color='';
             inputB.style.backgroundColor = '';
@@ -196,6 +208,15 @@
             alert(Privet)
         }
 
+        function changeOutput (buttonNum, backColor, textColor, border, radius) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.border = border;
+            output.style.borderRadius = radius;
+        }
+
     </script>
     <style>
         .massage {
@@ -224,6 +245,11 @@
         .l2 {
             margin-top: 5px;
         }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
     </style>
 
 </head>
@@ -242,6 +268,15 @@
         <div class="massage" onclick="showOtnosh()" >Найти отношение чисел</div>
         <div class="massage" onclick="showStep()" >Возвести число в степень</div><br> 
         <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
+    
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow', '5px solid', '12px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime', '7px double', '20px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, '#4b0082', 'black', '3px dashed', '5px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'lime', 'red', '5px double', '15px')">
+        </div>
+
+        <div id="output"></div>
     </main>
 
     <footer style="cursor: pointer;" ondblclick="showPrivet()">
