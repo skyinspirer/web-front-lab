@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showMult() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+            let summa = document.getElementById('summa');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let c = parseInt(inputC.value);
+            let d = parseInt(inputD.value);
+            let x = 400;
+            let x1 = 300;
+            let x2 = 350;
+            let x3 = 250;
+
+            if(a < 0) {
+                alert("Количество Яблок не может быть меньше 0");
+                return
+            }
+
+            if(b < 0) {
+                alert("Количество Бананов не может быть меньше 0");
+                return
+            }
+
+            if(c < 0) {
+                alert("Количество Апельсинов не может быть меньше 0");
+                return
+            }
+
+            if(d < 0) {
+                alert("Количество Груш не может быть меньше 0");
+                return
+            }
+
+            if(isNaN(a)) {
+                alert("Введите пожалуйста количество Яблок!");
+                inputA.style.borderColor = 'red';
+                return
+            }
+
+            inputA.style.borderColor = '';
+
+            if(isNaN(b)) {
+                alert("Введите пожалуйста количество Бананов!");
+                inputB.style.borderColor = 'red';
+                return
+            }
+
+            inputB.style.borderColor = '';
+
+            if(isNaN(c)) {
+                alert("Введите пожалуйста количество Апельсинов!");
+                inputC.style.borderColor = 'red';
+                return
+            }
+
+            inputC.style.borderColor = '';
+
+            if(isNaN(d)) {
+                alert("Введите пожалуйста количество Груш!");
+                inputD.style.borderColor = 'red';
+                return
+            }
+
+            inputD.style.borderColor = '';
+            
+            let result = a * x + b * x1 + c * x2 + d * x3;
+            summa.innerHTML = 'Итоговая сумма: ' + result
+        }
+
+        function clearFields() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+            let summa = document.getElementById('summa');
+
+            inputA.value = ""
+            inputB.value = ""
+            inputC.value = ""
+            inputD.value = ""
+            summa.innerHTML = ""
+        }
+
+    </script>
+    <style>
+        .okno {
+            border: 4px dashed #007CBA;
+            display: inline-block;
+            margin: 30px;
+            padding: 30px;
+            margin-left: 600px;
+            border-radius: 15px;
+            width: 400px;
+            background-color: rgba(255, 239, 204, 0.9);
+        }
+
+        .knopka {
+            border: 3px solid #FFA500;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px;
+            padding: 12px;
+            background-color: rgba(235, 126, 126, 0.8);
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        .knopka1 {
+            margin-left: 40px;
+        }
+
+        .vvod {
+            width: 240px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border: 3px solid #007CBA;
+            border-radius: 8px;
+            height: 24px;
+            font-size: 18px;
+        }
+        
+        #summa {
+            color: #B22222;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        
+        .zagolovok {
+            text-align: center;
+            font-weight: bold;
+            color: #4B0082;
+            font-size: 40px;
+            margin-bottom: 25px;
+        }
+        
+        .num {
+            color: #333333;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+    
+
+    <main>
+        <div class="okno">
+            <div class="zagolovok">Корзина товаров</div>
+            <div>
+                <label class="num">Яблоки <span class="price">(400 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberA" min="0" placeholder="Введите количество Яблок!"></label><br>
+            </div>
+            <div>
+                <label class="num">Бананы <span class="price">(300 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberB" placeholder="Введите количество Бананов!"></label><br>
+            </div>
+            <div>
+                <label class="num">Апельсины <span class="price">(350 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberC" placeholder="Введите количество Апельсинов!"></label><br>
+            </div>
+            <div>
+                <label class="num">Груши <span class="price">(250 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberD" placeholder="Введите количество Груш!"></label><br>
+            </div>
+            <div class="knopka knopka1" onclick="showMult()">Рассчитать</div>
+            <div class="knopka" onclick="clearFields()">Очистить</div>
+            <div id="summa"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
