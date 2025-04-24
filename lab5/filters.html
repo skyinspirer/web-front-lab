@@ -17,22 +17,28 @@
         }
 
         function brightnessChange() {
-             let value = document.getElementById('brightnessValue').value + '%';
-             document.getElementById('brightnessOutput').innerText = value;
-             document.getElementById('blurImage').style.filter = 'brightness(' + value + ')';
-         }
+            let value = document.getElementById('brightnessValue').value + '%';
+            document.getElementById('brightnessOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'brightness(' + value + ')';
+        }
 
-         function contrastChange() {
-             let value = document.getElementById('contrastValue').value + '%';
-             document.getElementById('contrastOutput').innerText = value;
-             document.getElementById('blurImage').style.filter = 'contrast(' + value + ')';
-         }
+        function contrastChange() {
+            let value = document.getElementById('contrastValue').value + '%';
+            document.getElementById('contrastOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'contrast(' + value + ')';
+        }
 
-         function grayscaleChange() {
-             let value = document.getElementById('grayscaleValue').value + '%';
-             document.getElementById('grayscaleOutput').innerText = value;
-             document.getElementById('blurImage').style.filter = 'grayscale(' + value + ')';
-         }
+        function grayscaleChange() {
+            let value = document.getElementById('grayscaleValue').value + '%';
+            document.getElementById('grayscaleOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'grayscale(' + value + ')';
+        }
+
+        function huerotateChange() {
+           let value = document.getElementById('huerotateValue').value + 'deg';
+            document.getElementById('huerotateOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'hue-rotate(' + value + ')';
+        }
     </script>
     <style>
         .img {
@@ -67,6 +73,10 @@
             <label>Фильтр grayscale:</label>
             <input type="range" min="0" max="100" value="0" onchange="grayscaleChange()" id="grayscaleValue">
             <span id="grayscaleOutput"></span>
+
+            <label>Фильтр huerotate:</label>
+            <input type="range" min="0" max="360" value="0" onchange="huerotateChange()" id="huerotateValue">
+            <span id="huerotateOutput"></span>
 
         </div>
         <div><img src="123.jpg" id="blurImage" class="img"></div>
