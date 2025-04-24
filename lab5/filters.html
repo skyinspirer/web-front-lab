@@ -39,6 +39,12 @@
             document.getElementById('huerotateOutput').innerText = value;
             document.getElementById('blurImage').style.filter = 'hue-rotate(' + value + ')';
         }
+
+        function invetrChange() {
+            let value = document.getElementById('invetrValue').value + '%';
+            document.getElementById('invetrOutput').innerText = value;
+            document.getElementById('blurImage').style.filter = 'invert(' + value + ')';
+        }
     </script>
     <style>
         .img {
@@ -77,6 +83,10 @@
             <label>Фильтр huerotate:</label>
             <input type="range" min="0" max="360" value="0" onchange="huerotateChange()" id="huerotateValue">
             <span id="huerotateOutput"></span>
+
+            <label>Фильтр invetr:</label>
+            <input type="range" min="0" max="100" value="0" onchange="invetrChange()" id="invetrValue">
+            <span id="invetrOutput"></span>
 
         </div>
         <div><img src="123.jpg" id="blurImage" class="img"></div>
