@@ -1,286 +1,123 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
-    <link rel="stylesheet" href="../main.css">
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../favicon-16x16.png">
-    <link rel="icon" href="../favicon-32x32.png">
-    <script>
-        function showSum () {
-            let inputA = document.getElementById('numberA');
-            let inputB = document.getElementById('numberB');
-            let a = parseInt (inputA.value);
-            let b = parseInt (inputB.value);
-
-            if(isNaN(a)) {
-                alert('Введите числовое значение в первое поле')
-                inputA.focus();
-                inputA.select();
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(b)) {
-                alert('Введите числовое значение во второе поле')
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            inputA.style.color='';
-            inputA.style.backgroundColor = '';
-
-            inputB.style.color='';
-            inputB.style.backgroundColor = '';
-
-            let result = a + b;
-            alert('Сумма чисел ' + a + ' и ' + b + ' равна ' + result);
-        }
-
-        function showRazn() {
-            let inputA = document.getElementById('numberA');
-            let inputB = document.getElementById('numberB');
-            let a = parseInt (inputA.value);
-            let b = parseInt (inputB.value);
-
-            if(isNaN(a)) {
-                alert('Введите числовое значение в первое поле')
-                inputA.focus();
-                inputA.select();
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(b)) {
-                alert('Введите числовое значение во второе поле')
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            inputA.style.color='';
-            inputA.style.backgroundColor = '';
-
-            inputB.style.color='';
-            inputB.style.backgroundColor = '';
-
-            let result = a - b;
-            alert('Разность чисел ' + a + ' и ' + b + ' равна ' + result);
-        }
-
-        function showProiz () {
-            let inputA = document.getElementById('numberA');
-            let inputB = document.getElementById('numberB');
-            let a = parseInt (inputA.value);
-            let b = parseInt (inputB.value);
-
-            if(isNaN(a)) {
-                alert('Введите числовое значение в первое поле')
-                inputA.focus();
-                inputA.select();
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(b)) {
-                alert('Введите числовое значение во второе поле')
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            inputA.style.color='';
-            inputA.style.backgroundColor = '';
-
-            inputB.style.color='';
-            inputB.style.backgroundColor = '';
-
-            let result = a * b;
-            alert('Произведение чисел ' + a + ' и ' + b + ' равно ' + result);
-        }
-
-        function showOtnosh () {
-            let inputA = document.getElementById('numberA');
-            let inputB = document.getElementById('numberB');
-            let a = parseInt (inputA.value);
-            let b = parseInt (inputB.value);
-            if(b == 0) {
-                alert('На ноль делить нельзя');
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(a)) {
-                alert('Введите числовое значение в первое поле')
-                inputA.focus();
-                inputA.select();
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(b)) {
-                alert('Введите числовое значение во второе поле')
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            inputA.style.color='';
-            inputA.style.backgroundColor = '';
-
-            inputB.style.color='';
-            inputB.style.backgroundColor = '';
-
-            let result = a / b;
-            alert('Отношение чисел ' + a + ' и ' + b + ' равно ' + result);
-        }
-
-        function showStep () {
-            let inputA = document.getElementById('numberA');
-            let inputB = document.getElementById('numberB');
-            let a = parseInt (inputA.value);
-            let b = parseInt (inputB.value);
-            if(a == 0 && b == 0) {
-                alert('Введите хотя бы одно числовое значение не равняющееся нулю')
-                inputA.focus();
-                inputA.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-                
-            if(isNaN(a)) {
-                alert('Введите числовое значение в первое поле')
-                inputA.focus();
-                inputA.select();
-                inputA.style.color = 'red';
-                inputA.style.backgroundColor = 'orange';
-                return;
-            }
-
-            if(isNaN(b)) {
-                alert('Введите числовое значение во второе поле')
-                inputB.focus();
-                inputB.select();
-                inputB.style.color = 'red';
-                inputB.style.backgroundColor = 'orange';
-                return;
-            }
-
-            inputB.style.color='';
-            inputB.style.backgroundColor = '';
-            inputA.style.color='';
-            inputA.style.backgroundColor = '';
-
-            let result = a ** b;
-            alert('Возведение числа ' + a + ' в ' + b + ' стпень равно ' + result);
-        }
-
-        
-        function showAutor () {
-            let Autor = 'Автор страницы:\nЦеунов Матвей Евгеньевич';
-            alert(Autor);
-        }
-
-        function showPrivet() {
-            let Privet = 'Приветствую вас на моей странице!\n Хорошего дня'
-            alert(Privet)
-        }
-
-        function changeOutput (buttonNum, backColor, textColor, border, radius) {
-            let output = document.getElementById('output');
-            output.innerHTML = 'Нажата кнопка ' + buttonNum;
-            output.style.backgroundColor = backColor;
-            output.style.color = textColor;
-            output.style.border = border;
-            output.style.borderRadius = radius;
-        }
-
-    </script>
-    <style>
-        .massage {
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-            display: inline-block;
-            border: 3px solid  rgb(83, 18, 75);
-            border-radius: 20px;
-            background-color: rgb(233, 61, 210);
-            margin: 10px;
-            padding: 20px;
-        }
-        label {
-            color: rgb(252, 252, 252);
-            cursor: pointer;
-            display: inline-block;
-            border: 2px solid  rgb(0, 56, 12);
-            border-radius: 20px;
-            background-color: rgb(62, 196, 1);
-            padding: 15px;
-            margin: 10px;
-        }
-        .l1 {
-            margin-top: 3px;
-        }
-        .l2 {
-            margin-top: 5px;
-        }
-        #output {
-            border: 1px solid;
-            width: 300px;
-            height: 40px;
-        }
-    </style>
-
-</head>
-<body>
-    <header style="cursor: pointer;" onclick="showAutor()">
-        НГТУ, ФБ, Лабораторная работа 5
-    </header>
-    
-
-    <main>
-        <label class="l1"> Первое число: <input type="number" id="numberA"> </label> <br>
-        <label class="l2"> Второе число: <input type="number" id="numberB"> </label> <br>
-        <div class="massage" onclick="showSum()" >Найти сумму чисел</div>
-        <div class="massage" onclick="showRazn()" >Найти разность чисел чисел</div>
-        <div class="massage" onclick="showProiz()" >Найти произведение чисел</div>
-        <div class="massage" onclick="showOtnosh()" >Найти отношение чисел</div>
-        <div class="massage" onclick="showStep()" >Возвести число в степень</div><br> 
-        <div class="massage" onclick="showAutor()">Узнать, кто автор страницы</div> 
-    
-        <div>
-            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow', '5px solid', '12px')">
-            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime', '7px double', '20px')">
-            <input type="button" value="Кнопка 3" onclick="changeOutput(3, '#4b0082', 'black', '3px dashed', '5px')">
-            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'lime', 'red', '5px double', '15px')">
-        </div>
-
-        <div id="output"></div>
-    </main>
-
-    <footer style="cursor: pointer;" ondblclick="showPrivet()">
-        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
-    </footer>
-</body>
-</html>
+ <html lang="ru">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+     <link rel="stylesheet" href="../main.css">
+     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+     <link rel="icon" href="../favicon-16x16.png">
+     <link rel="icon" href="../favicon-32x32.png">
+     <script>
+         function showCircle(circleId, opacity, height, width, transition) {
+             let circle = document.getElementById(circleId); 
+             circle.style.opacity = opacity;
+             circle.style.height = height;
+             circle.style.width = width;
+             circle.style.transition = transition;
+         }
+         
+         function clearCircle() {
+             let circle1 = document.getElementById('circle1');
+             circle1.style.opacity = '1';
+             circle1.style.height = '100px';
+             circle1.style.width = '100px';
+             circle1.style.transition = '1s';
+ 
+             let circle2 = document.getElementById('circle2');
+             circle2.style.opacity = '1';
+             circle2.style.height = '100px';
+             circle2.style.width = '100px';
+             circle2.style.transition = '1s';
+ 
+             let circle3 = document.getElementById('circle3');
+             circle3.style.opacity = '1';
+             circle3.style.height = '100px';
+             circle3.style.width = '100px';
+             circle3.style.transition = '1s';
+ 
+             let circle4 = document.getElementById('circle4');
+             circle4.style.opacity = '1';
+             circle4.style.height = '100px';
+             circle4.style.width = '100px';
+             circle4.style.transition = '1s';
+ 
+             let circle5 = document.getElementById('circle5');
+             circle5.style.opacity = '1';
+             circle5.style.height = '100px';
+             circle5.style.width = '100px';
+             circle5.style.transition = '1s';
+ 
+             let circle6 = document.getElementById('circle6');
+             circle6.style.opacity = '1';
+             circle6.style.height = '100px';
+             circle6.style.width = '100px';
+             circle6.style.transition = '1s';
+ 
+             let circle7 = document.getElementById('circle7');
+             circle7.style.opacity = '1';
+             circle7.style.height = '100px';
+             circle7.style.width = '100px';
+             circle7.style.transition = '1s';
+ 
+             let circle8 = document.getElementById('circle8');
+             circle8.style.opacity = '1';
+             circle8.style.height = '100px';
+             circle8.style.width = '100px';
+             circle8.style.transition = '1s';
+ 
+             let circle9 = document.getElementById('circle9');
+             circle9.style.opacity = '1';
+             circle9.style.height = '100px';
+             circle9.style.width = '100px';
+             circle9.style.transition = '1s';
+ 
+             let circle10 = document.getElementById('circle10');
+             circle10.style.opacity = '1';
+             circle10.style.height = '100px';
+             circle10.style.width = '100px';
+             circle10.style.transition = '1s';
+         }
+ 
+     </script>
+     <style>
+         .circle {
+             display: flex;
+             border: 2px solid;
+             border-radius: 50%;
+             height: 100px;
+             width: 100px;
+             justify-content: center;
+             align-items: center;
+             cursor: pointer;
+             margin: 5px;
+             position: absolute;
+         }
+     </style>
+ </head>
+ <body>
+     <header>
+         НГТУ, ФБ, Лабораторная работа 5
+     </header>
+     
+ 
+     <main>
+         <div style="left: 300px; top: 150px; background-color: coral; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle1" onclick="showCircle('circle1', '0', '0', '0', '1s')">1</div>
+         <div style="left: 700px; top: 100px; background-color: teal; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle2" onclick="showCircle('circle2', '0', '0', '0', '1s')">2</div>
+         <div style="left: 600px; top: 350px; background-color: orange; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle3" onclick="showCircle('circle3', '0', '0', '0', '1s')">3</div>
+         <div style="left: 1500px; top: 400px; background-color: lime; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle4" onclick="showCircle('circle4', '0', '0', '0', '1s')">4</div>
+         <div style="left: 400px; top: 500px; background-color: violet; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle5" onclick="showCircle('circle5', '0', '0', '0', '1s')">5</div>
+         <div style="left: 900px; top: 250px; background-color: pink; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle6" onclick="showCircle('circle6', '0', '0', '0', '1s')">6</div>
+         <div style="left: 1200px; top: 600px; background-color: lightseagreen; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle7" onclick="showCircle('circle7', '0', '0', '0', '1s')">7</div>
+         <div style="left: 100px; top: 350px; background-color: darkmagenta; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle8" onclick="showCircle('circle8', '0', '0', '0', '1s')">8</div>
+         <div style="left: 580px; top: 600px; background-color: lightblue; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle9" onclick="showCircle('circle9', '0', '0', '0', '1s')">9</div>
+         <div style="left: 1400px; top: 100px; background-color: royalblue; color: white; border: 5px solid black; font-size: 70px; font-weight: bold;" class="circle" id="circle10" onclick="showCircle('circle10', '0', '0', '0', '1s')">10</div>
+         <input type="button" value="Сбросить" style="margin-left: 450px; margin-top: 5px; padding: 15px; font-size: 25px; color: black; background-color: lightgray;" onclick="clearCircle()">
+     </main>
+ 
+     <footer>
+         &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+     </footer>
+ </body>
+ </html>
