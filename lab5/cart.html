@@ -15,16 +15,20 @@
             let inputB = document.getElementById('numberB');
             let inputC = document.getElementById('numberC');
             let inputD = document.getElementById('numberD');
+            let inputE = document.getElementById('numberE');
             let summa = document.getElementById('summa');
 
             let a = parseInt(inputA.value);
             let b = parseInt(inputB.value);
             let c = parseInt(inputC.value);
             let d = parseInt(inputD.value);
+            let e = parseInt(inputE.value);
             let x = 400;
             let x1 = 300;
             let x2 = 350;
             let x3 = 250;
+            let x4 = 250;
+
 
             if(a < 0) {
                 alert("Количество Яблок не может быть меньше 0");
@@ -46,11 +50,17 @@
                 return
             }
 
+            if(d < 0) {
+                alert("Количество Киви не может быть меньше 0");
+                return
+            }
+
             if(isNaN(a)) {
                 alert("Введите пожалуйста количество Яблок!");
                 inputA.style.borderColor = 'red';
                 return
             }
+            
 
             inputA.style.borderColor = '';
 
@@ -59,6 +69,7 @@
                 inputB.style.borderColor = 'red';
                 return
             }
+
 
             inputB.style.borderColor = '';
 
@@ -76,9 +87,16 @@
                 return
             }
 
-            inputD.style.borderColor = '';
+            if(isNaN(a)) {
+                alert("Введите пожалуйста количество Киви!");
+                inputE.style.borderColor = 'red';
+                return
+            }
+        
+
+            inputE.style.borderColor = '';
             
-            let result = a * x + b * x1 + c * x2 + d * x3;
+            let result = a * x + b * x1 + c * x2 + d * x3 + e * x4;
             summa.innerHTML = 'Итоговая сумма: ' + result
         }
 
@@ -87,12 +105,14 @@
             let inputB = document.getElementById('numberB');
             let inputC = document.getElementById('numberC');
             let inputD = document.getElementById('numberD');
+            let inputE = document.getElementById('numberE');
             let summa = document.getElementById('summa');
 
             inputA.value = ""
             inputB.value = ""
             inputC.value = ""
             inputD.value = ""
+            inputE.value = ""
             summa.innerHTML = ""
         }
 
@@ -103,7 +123,7 @@
             display: inline-block;
             margin: 30px;
             padding: 30px;
-            margin-left: 600px;
+            margin-left: 700px;
             border-radius: 15px;
             width: 400px;
             background-color: rgba(255, 239, 204, 0.9);
@@ -126,7 +146,7 @@
         }
 
         .vvod {
-            width: 240px;
+            width: 370px;
             margin-top: 12px;
             margin-bottom: 12px;
             border: 3px solid #007CBA;
@@ -175,6 +195,9 @@
             </div>
             <div>
                 <label class="num">Груши <span class="price">(250 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberD" placeholder="Введите количество Груш!"></label><br>
+            </div>
+            <div>
+                <label class="num">Киви <span class="price">(250 руб./шт)</span><br><input class="vvod" type="number" value="" id="numberE" placeholder="Введите количество Киви!"></label><br>
             </div>
             <div class="knopka knopka1" onclick="showMult()">Рассчитать</div>
             <div class="knopka" onclick="clearFields()">Очистить</div>
