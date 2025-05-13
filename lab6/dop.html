@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showDiagramm() {
+            const minTemperatures = [];
+            const maxTemperatures = [];
+
+            for (let i = 0; i < 30; i++) {
+                minTemperatures.push(Math.floor(Math.random() * 15) + 5); 
+                maxTemperatures.push(minTemperatures[i] + Math.floor(Math.random() * 15) + 10); 
+            }
+
+            const diagHeight = document.getElementById('diag').clientHeight;
+            const maxTemp = Math.max(...maxTemperatures);
+            const minTemp = Math.max(...minTemperatures);
+            const k = diagHeight / maxTemp * 0.8;  
+            const k1 = diagHeight / minTemp * 0.3; 
+
+            const block = document.getElementById('diag');
+            block.innerHTML = ''; 
+
+            for (let i = 0; i < 30; i++) {
+                const bar = document.createElement('div');
+                bar.classList.add('bar');
+                bar.style.height = (k * maxTemperatures[i]) + 'px';
+                bar.dataset.max = maxTemperatures[i];
+                bar.innerHTML = `${maxTemperatures[i]}\n°C`;
+
+                const bar1 = document.createElement('div');
+                bar1.classList.add('bar1');
+                bar1.style.height = (k1 * minTemperatures[i]) + 'px';
+                bar1.dataset.min = minTemperatures[i];
+                bar1.innerHTML = `${minTemperatures[i]}\n°C`;
+
+                block.appendChild(bar);
+                block.appendChild(bar1);
+            }
+        }
+
+        function pullDay() {
+            const day = parseInt(document.getElementById('vvod').value) - 1;
+            const bars = document.getElementsByClassName('bar');
+            const bars1 = document.getElementsByClassName('bar1');
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            const rgb1 = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            let info = document.getElementById('temp');
+            let block = document.getElementById('diag');
+
+            if (day >= 0 && day < bars.length) {
+                for (let i = 0; i < bars.length; i++) {
+                    if (i == day) {
+                        bars[i].style.opacity = '1';
+                        bars[i].style.transition = '1s';
+                        bars1[i].style.opacity = '1';
+                        bars1[i].style.transition = '1s';
+                        bars[i].style.backgroundColor = rgb;
+                        bars1[i].style.backgroundColor = rgb1;
+                    } else {
+                        bars[i].style.opacity = '0.1';
+                        bars[i].style.transition = '1s';
+                        bars1[i].style.opacity = '0.1';
+                        bars1[i].style.transition = '1s';
+                        block.style.backgroundColor = 'lightblue';
+                        block.style.transition = '1s';
+                    }
+                }
+                const minTemp = bars1[day].dataset.min;
+                const maxTemp = bars[day].dataset.max;
+                info.innerText = `Минимальная температура: ${minTemp}°C\n Максимальная температура: ${maxTemp}°C`;
+            } else {
+                info.innerText = 'Введите число месяца с 1 по 30';
+            }
+        }
+
+        function clearStyle() {
+            let info = document.getElementById('temp');
+            let input = document.getElementById('vvod');
+            const bars = document.getElementsByClassName('bar');
+            const bars1 = document.getElementsByClassName('bar1');
+            info.innerText = '';
+            input.value =  '';
+            const block = document.getElementById('diag');
+            block.style.backgroundColor = 'rgba(212, 244, 201, 0.714)';
+            
+            for (let i = 0; i < bars.length; i++) {
+                bars[i].style.opacity = '1';
+                bars1[i].style.opacity = '1';
+                bars[i].style.backgroundColor = 'rgb(255, 180, 40)';
+                bars1[i].style.backgroundColor = 'rgb(108, 198, 228)';
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .block1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .block {
+            background-color: #f2f9f2;
+            width: 90%;
+            height: 500px;
+            display: flex;
+            align-items: flex-end;
+            border-radius: 10px;
+            border: 3px solid #ccc;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .zag {
+            position: absolute;
+            font-size: 36px;
+            color: #003366;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .bar {
+            height: 10px;
+            width: 20px;
+            background-color: #ff9f1c;
+            margin-right: 2px;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .bar1 {
+            height: 10px;
+            width: 20px;
+            background-color: #6cc6e5;
+            margin-left: 2px;
+            margin-right: 2px;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .vvod {
+            width: 200px;
+            height: 35px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 2px solid #0073e6;
+            text-align: center;
+            position: absolute;
+            top: 560px;
+            left: 45%;
+            padding: 5px;
+        }
+
+        .knopka {
+            width: 160px;
+            height: 50px;
+            background-color: #0073e6;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: absolute;
+            top: 605px;
+            left: 30%;
+        }
+
+        .knopka:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .knopka:active {
+            transform: scale(0.98);
+        }
+
+        .knopka1 {
+            background-color: #f44336;
+            left: 60%;
+        }
+
+        .temp {
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            position: absolute;
+            top: 680px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 500px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body onload="showDiagramm()">
+    <header>
+        НГТУ, ФБ, Лабораторная 6
+    </header>
+    <main>
+        <div class="block1">
+            <h1 class="zag">Диаграмма погоды за месяц</h1>
+            <div class="block" id="diag"></div>
+            <input class="vvod" type="number" id="vvod" placeholder="Введите номер дня">
+            <button class="knopka" onclick="pullDay()">Показать температуру</button>
+            <button class="knopka knopka1" onclick="clearStyle()">Очистить</button>
+            <div class="temp" id="temp"></div>
+        </div>
+    </main>
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
