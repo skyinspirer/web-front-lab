@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 6</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-16x16.png">
@@ -25,25 +25,139 @@
             out4.innerHTML = 'Африканский локаль<br> ' + today.toLocaleString('af');
             out5.innerHTML = 'Локаль Урду<br> ' + today.toLocaleString('ur-PK');
         }
+
+        function updateTime() {
+            update = setInterval(showDate, 0);
+            document.getElementById('update-btn').disabled = true;
+            document.getElementById('stopupdate-btn').disabled = false;
+        }
+
+        function stopupdateTime() {
+            clearInterval(update);
+            document.getElementById('update-btn').disabled = false;
+            document.getElementById('stopupdate-btn').disabled = true;
+        }
+
+        function changeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const footer = document.getElementsByTagName('footer')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+            footer.style.color = rgb;
+            header.style.transition = '0.5s';
+            footer.style.transition = '0.5s';
+        }
+
+        function changeBackColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const footer = document.getElementsByTagName('footer')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.backgroundColor = rgb;
+            footer.style.backgroundColor = rgb;
+        }
+
+        function startChangeColors() {
+            changeColors()
+            changeBackColors()
+            timerNum = setInterval(changeColors, 500);
+            timerNum1 = setInterval(changeBackColors, 500);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+
+        function stopChangeColors() {
+            clearInterval(timerNum);
+            clearInterval(timerNum1);
+            document.getElementById('start-btn').disabled = false;
+            document.getElementById('stop-btn').disabled = true;
+        }
+
     </script>
+
     <style>
-        .date {
-            color: black;
-            text-align: center;
-            margin-top: 10px;
-            border: 1px solid;
-            margin: 10px auto;
-            display: table;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-radius: 20px;
-        }
         h1 {
-            color: black;
+            color: #222;
             text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 600;
         }
+
+        .date {
+            color: #333;
+            text-align: center;
+            margin: 10px auto;
+            border: 2px solid #dcdcdc;
+            background-color: #f9f9f9;
+            display: table;
+            padding: 12px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .date:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .date:active {
+            transform: scale(0.95);
+        }
+
+        .button, .button2, .button3 {
+            height: 100px;
+            width: 180px;
+            border: none;
+            border-radius: 14px;
+            font-size: 20px;
+            background-color: #eef2f7;
+            color: #333;
+            font-family: 'Segoe UI', sans-serif;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .button:hover,
+        .button2:hover,
+        .button3:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .button:active,
+        .button2:active,
+        .button3:active {
+            transform: scale(0.95);
+            box-shadow: none;
+        }
+
+        .button1 { margin-left: 37%; margin-top: 50px; }
+        .button4 { margin-left: 51%; margin-top: 50px;}
+        .button2 { margin-top: 0px; margin-left: 58px; }
+        .button3 { margin-top: 0px; margin-left: 560px; }
+
+        .block {
+            width: 800px;
+            height: 600px;
+            background-color: #ffffff;
+            position: relative;
+            margin: 20px auto;
+            border: 2px solid #dcdcdc;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .block2 {
+            border: 2px solid #c7e5c4;
+            margin-left: 8px;
+            padding: 20px 35px;
+            display: none;
+            border-radius: 16px;
+            background-color: #e9fbee;
+            font-family: 'Segoe UI', sans-serif;
+        }
+    
     </style>
 </head>
 <body onload="showDate()">
@@ -53,12 +167,21 @@
     
 
     <main>
-        <div class="date" id="current-date"></div>
-        <div class="date" id="current-date1"></div>
-        <div class="date" id="current-date2"></div>
-        <div class="date" id="current-date3"></div>
-        <div class="date" id="current-date4"></div>
-        <div class="date" id="current-date5"></div>
+        <div class="block">
+            <h1>Дата и время для разных локалей</h1>
+            <div class="date" id="current-date"></div>
+            <div class="date" id="current-date1"></div>
+            <div class="date" id="current-date2"></div>
+            <div class="date" id="current-date3"></div>
+            <div class="date" id="current-date4"></div>
+            <div class="date" id="current-date5"></div>
+            <button onclick="updateTime()" id="update-btn" class="button2 button">Обновлять время</button>
+            <button onclick="stopupdateTime()" id="stopupdate-btn" disabled class="button3 button">Остановить обновление времени</button>
+        </div>
+        <div>
+            <button onclick="startChangeColors()" id="start-btn" class="button button1">Старт</button>
+            <button onclick="stopChangeColors()" id="stop-btn" disabled class="button button4">Стоп</button>
+        </div>
     </main>
 
     <footer>
