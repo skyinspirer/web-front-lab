@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 3</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showDate() {
+            let out = document.getElementById('current-date');
+            let out1 = document.getElementById('current-date1');
+            let out2 = document.getElementById('current-date2');
+            let out3 = document.getElementById('current-date3');
+            let out4 = document.getElementById('current-date4');
+            let out5 = document.getElementById('current-date5');
+            let today = new Date();
+            out.innerHTML = 'Русский локаль:<br> ' + today.toLocaleString('ru-RU');
+            out1.innerHTML = 'Японский локаль<br> ' + today.toLocaleString('ja-JP');
+            out2.innerHTML = 'Персидский локаль<br> ' + today.toLocaleString('fa-IR');
+            out3.innerHTML = 'Ливийский локаль<br> ' + today.toLocaleString('ar-LY');
+            out4.innerHTML = 'Африканский локаль<br> ' + today.toLocaleString('af');
+            out5.innerHTML = 'Локаль Урду<br> ' + today.toLocaleString('ur-PK');
+        }
+    </script>
+    <style>
+        .date {
+            color: black;
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid;
+            margin: 10px auto;
+            display: table;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-radius: 20px;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="showDate()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+    
+
+    <main>
+        <div class="date" id="current-date"></div>
+        <div class="date" id="current-date1"></div>
+        <div class="date" id="current-date2"></div>
+        <div class="date" id="current-date3"></div>
+        <div class="date" id="current-date4"></div>
+        <div class="date" id="current-date5"></div>
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
