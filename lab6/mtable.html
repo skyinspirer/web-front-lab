@@ -15,27 +15,130 @@
             tbl.innerHTML = '<h1>Таблица умножения</h1>';
             for(i = 1; i <= 10; i++) {
                 let s = `<div>${i} * 7 = ${i*7}</div>`;
-                tbl.innerHTML += s; 
+                tbl.innerHTML += s;
+            }
+        }
+        function dopZnach() {
+            let tbl = document.getElementById('mtable');
+            let multiplier = parseInt(document.getElementById('A').value);
+            let start = parseInt(document.getElementById('B').value);
+            let end = parseInt(document.getElementById('C').value);
+            let errorMsg1 = document.getElementById('error');
+            let errorMsg2 = document.getElementById('error');
+
+            if(start > end) {
+                errorMsg1.innerText = 'Поле "Начать с" должно быть больше чем "Закончить на".';
+                B.style.border = '2px solid red';
+                C.style.border = '2px solid red';
+                return;
+            }
+
+            B.style.border = '';
+            C.style.border = '';
+            errorMsg1.innerText = '';
+
+            if(isNaN(multiplier)) {
+                errorMsg2.innerText = 'Введите данные в первое поле!';
+                A.style.border = '2px solid red';
+                return;
+            }
+
+            A.style.border = '';
+            errorMsg2.innerText = '';
+
+            if(isNaN(start)) {
+                errorMsg2.innerText = 'Введите данные во второе поле!';
+                B.style.border = '2px solid red';
+                return;
+            }
+
+            B.style.border = '';
+            errorMsg2.innerText = '';
+
+            if(isNaN(end)) {
+                errorMsg2.innerText = 'Введите данные в третье поле!';
+                C.style.border = '2px solid red';
+                return;
+            }
+
+            C.style.border = '';
+            errorMsg2.innerText = '';
+            tbl.innerHTML = '<h1>Таблица умножения</h1>';
+
+            for(let i = start; i <= end; i++) {
+                let s = `<div>${i} * ${multiplier} = ${i * multiplier}</div>`;
+                tbl.innerHTML += s;
             }
         }
     </script>
-    <style>
-        .tbl {
-            color: black;
-            margin-top: 20px;
-            padding-bottom: 20px;
+    <style> 
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
         }
 
+        #mtable {
+            font-size: 20px;
+        }
+
+        div {
+            color: black ;
+        }
+
+        #error {
+            color: crimson;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px auto;
+            font-size: 20px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background-color: #aaf;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background-color: #88f;
+            transform: scale(1.05);
+        }
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .input {
+            display: block;
+            width: 200px;
+            padding: 8px;
+            margin: 10px auto;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.15);
+            font-size: 18px;
+            text-align: center;
+        }
     </style>
-</head>
+</head> 
 <body onload = 'showMutipleTable()'>
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
     
-
     <main>
-        <div id="mtable" class="tbl"></div>
+    <div id="error"></div>
+    <div id="mtable" class="tbl"></div>
+    <div>
+        <label class="num">Умножить на: <input class="vvod" type="number" value="" id="A"></label><br>
+        <label class="num">Начать с: <input class="vvod" type="number" value="" id="B"></label><br>
+        <label class="num">Закончить на: <input class="vvod" type="number" value="" id="C"></label><br>
+        <input class="knopka" type="button" value="Рассчитать" onclick="dopZnach()">
+    </div>
     </main>
 
     <footer>
