@@ -9,15 +9,80 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showDiagramm() {
+            let data = [32, 56, 95, 15, 16, 84, 53, 25, 96, 59];
+            let colors = [
+                'rgb(255, 99, 71)',       
+                'rgb(32, 178, 170)',     
+                'rgb(75, 0, 130)',        
+                'rgb(255, 215, 0)',       
+                'rgb(34, 139, 34)',       
+                'rgb(255, 165, 0)',      
+                'rgb(0, 206, 209)',       
+                'rgb(255, 105, 180)',     
+                'rgb(0, 255, 255)',       
+                'rgb(186, 85, 211)'       
+            ];
+            let bars = document.getElementsByClassName('bar');
+            const diagHeight = document.getElementById('diag').clientHeight;
+            const maxData = Math.max(...data);
+            const k = diagHeight / maxData * 0.9;
+            for(let i = 0; i < data.length; i++) {
+                bars[i].style.height = k*data[i] + 'px';
+                bars[i].style.backgroundColor = colors[i];
+                bars[i].innerHTML = data[i];
+            }
+        }
+    </script>
+    <style>
+        .bar {
+            height: 15px;
+            width: 100px;
+            background-color: rgba(140, 117, 181, 0.85);
+            border: 2px solid #4b4b4b;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .block {
+            background-color: #b4f3a7;
+            width: 940px;
+            height: 740px;
+            margin-top: 20px;
+            margin-left: 50px;
+            border: 3px solid #000000;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 15px;
+        }
+    </style>
 </head>
-<body>
+<body onload="showDiagramm()">
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
-    
 
     <main>
-        
+        <div id="diag" class="block">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
     </main>
 
     <footer>
