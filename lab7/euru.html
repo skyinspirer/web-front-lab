@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                }) 
+                .then(function(json) {
+                    let date = json.Date;
+                    let ispdate = date.slice(0, 10)
+                    let vivod = json.Valute.EUR.Value;
+                    let previous = json.Valute.EUR.Previous;
+                    let raznica = vivod - previous;
+                    let block = document.getElementById('block');
+                    let previous1 = document.getElementById('previous')
+                    let raznica1 =  document.getElementById('raznica')
+                    let date1 =  document.getElementById('date')
+                    let zagl =  document.getElementById('zagl')
+                    let link =  document.getElementById('link')
+    
+                    document.getElementById('date').innerHTML = '<b>Дата получаемого курса</b></br>' + ispdate;
+                    document.getElementById('kurs').innerHTML = '<b>Курс евро </b></br>' +  vivod;
+                    document.getElementById('previous').innerHTML = '<b>Курс евро за предыдущую дату</b></br>' + previous;
+                    
+                    if(raznica > 0) {
+                        document.getElementById('raznica').innerHTML = '<b>Разница между курсами</b></br>'+ raznica.toFixed(2) + "<div class='itog'>Курс евро вырос </div>"
+                    }
+                    else {
+                        document.getElementById('raznica').innerHTML = raznica.toFixed(2) + "<div class='itog2'>Курс евро упал"
+                    }
+                    
+                    block.style.border = '3px dashed #555555'; 
+                    block.style.borderRadius = '12px';               
+                    block.style.backgroundColor = '#f9f9f9';         
+
+                    kurs.style.backgroundColor = '#dcd0e2';          
+                    kurs.style.textDecoration = 'none';
+
+                    previous1.style.backgroundColor = '#dcd0e2';
+                    previous1.style.marginTop = '10px';
+                    previous1.style.textDecoration = 'none';
+
+                    raznica1.style.backgroundColor = '#dcd0e2';
+                    raznica1.style.marginBottom = '10px';
+                    raznica1.style.textDecoration = 'none';
+
+                    date1.style.backgroundColor = '#dcd0e2';
+                    date1.style.marginTop = '10px';
+                    date1.style.marginBottom = '10px';
+                    date1.style.textDecoration = 'none';
+
+                    zagl.style.display = 'block';
+                    link.style.display = 'block';
+                    link.style.textDecoration = 'none'; 
+                })
+        }
+    </script>
+    <style>
+        .block {
+            margin-left: 500px; 
+            margin-right: 500px; 
+            padding: 20px; 
+            padding-left: 10px; 
+            padding-right: 10px; 
+            margin-top: 30px; 
+        }
+
+        div {
+            text-align: center;
+            color: #000000;
+            font-weight: bold;
+            font-size: 24px; 
+        }
+
+        table {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        td {
+            padding: 15px; 
+            background-color: #b0bd82; 
+        }
+
+        button {
+            height: 70px; 
+            width: 200px; 
+            margin: 10px auto; 
+            display: block;
+            border: 2px solid #8e44ad; 
+            border-radius: 12px; 
+            background: linear-gradient(160deg, #8e44ad, #dcd0e2); 
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 22px; 
+            transition: 0.4s; 
+            margin-top: 10px; 
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        button:hover {
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5); 
+            transition: 0.3s;
+            scale: 1.1; 
+        }
+
+        button:active {
+            scale: 0.95; 
+            transition: 0.3s;
+            box-shadow: 0 0 0; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+    
+
+    <main>
+        <button onclick="getEuroExchangeRate()">Получить курс EUR</button>
+        <div class="block" id="block">
+            <div class="zagl" id="zagl">Курс EUR</div>
+            <div class="kurs" id="date"></div>
+            <div class="kurs" id="kurs"></div>
+            <div class="kurs" id="previous"></div>
+            <div class="kurs" id="raznica"></div>
+            <a href='https://www.cbr-xml-daily.ru/' target="_blank" id="link" class="link">*Интернет-ресурс*</a>
+        </div>    
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
