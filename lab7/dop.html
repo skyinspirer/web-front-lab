@@ -50,7 +50,6 @@
             if (tempChart) tempChart.destroy();
             if (humidityChart) humidityChart.destroy();
             
-            // Диаграмма температуры
             tempChart = new Chart(ctxTemp, {
                 type: 'bar',
                 data: {
@@ -93,7 +92,6 @@
                 }
             });
             
-            // Диаграмма влажности
             humidityChart = new Chart(ctxHumidity, {
                 type: 'bar',
                 data: {

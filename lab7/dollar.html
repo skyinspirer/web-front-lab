@@ -25,15 +25,15 @@
             }
             
             let sum = 0;
-            let detail = document.getElementById('detail');
+            let x = document.getElementById('x');
             let zagl = document.getElementById('zagl');
             for(let i = 0; i < exchange.length; i++) {
                 sum += exchange[i];
             }
             let average = sum / exchange.length;
             average = average.toFixed(2) + '₽';
-            detail.innerHTML = `Среднее значение курса: ${average}`;
-            detail.style.padding = '12px';
+            x.innerHTML = `Среднее значение курса: ${average}`;
+            x.style.padding = '12px';
         
 
             let button = document.getElementById('button');
@@ -107,7 +107,7 @@
         <button onclick="showExchange()">Курс доллара</button>
         <div class="block" id="block">
             <table border="1" id="dollar-table"></table>
-            <div id="detail"></div>
+            <div id="x"></div>
         </div>
     </main>
 

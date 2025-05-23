@@ -33,13 +33,13 @@
                 bar.classList.add('bar');
                 bar.style.height = (k * maxTemperatures[i]) + 'px';
                 bar.dataset.max = maxTemperatures[i];
-                bar.innerHTML = `${maxTemperatures[i]}\n°C`;
+                bar.innerHTML = `${maxTemperatures[i]}°C`;
 
                 const bar1 = document.createElement('div');
                 bar1.classList.add('bar1');
                 bar1.style.height = (k1 * minTemperatures[i]) + 'px';
                 bar1.dataset.min = minTemperatures[i];
-                bar1.innerHTML = `${minTemperatures[i]}\n°C`;
+                bar1.innerHTML = `${minTemperatures[i]}°C`;
 
                 block.appendChild(bar);
                 block.appendChild(bar1);
@@ -227,9 +227,9 @@
         <div class="block1">
             <h1 class="zag">Диаграмма погоды за месяц</h1>
             <div class="block" id="diag"></div>
-            <input class="vvod" type="number" id="vvod" placeholder="Введите номер дня">
+            <input class="vvod" type="number" id="vvod" placeholder="Введите число месяца">
             <button class="knopka" onclick="pullDay()">Показать температуру</button>
-            <button class="knopka knopka1" onclick="clearStyle()">Очистить</button>
+            <button class="knopka knopka1" onclick="clearStyle()">Назад</button>
             <div class="temp" id="temp"></div>
         </div>
     </main>
