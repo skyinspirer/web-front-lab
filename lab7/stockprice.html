@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script src="data.js"></script>
+    <script>
+        function showPromotion() {
+            let table = document.getElementById('promotion');
+            let block = document.getElementById('block');
+            let zagl = document.getElementById('zagl');
+            table.innerHTML = `    
+                        <tr>
+                            <td class='bord'><b>Дата</b></td>
+                            <td class='bord'><b>Цена</b></td>
+                            <td class='bord'><b>Разница</b></td>
+                        </tr>
+                    `;
+            for(let i = 0; i < price.length; i++) {
+                let tekPrice = price[i];
+                let itogPrice = price[i - 1];
+                let raznica;
+                
+                if (i > 0) {
+                    raznica = tekPrice - itogPrice;
+                } 
+
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                let td2 = document.createElement('td');
+                let td3 = document.createElement('td');
+
+                td.innerText = price[i] + '₽';
+                td2.innerText = date[i];
+        
+
+                if (isNaN(raznica)) {
+                    td3.innerText = '-';
+                } 
+
+                else {
+                    td3.innerText = raznica.toFixed(2);
+                }
+
+                if (raznica > 0) {
+                    td3.style.color = 'green'
+                    td3.style.fontWeight = 'bold'
+                }
+                
+                if (raznica < 0) {
+                    td3.style.color = 'red'
+                    td3.style.fontWeight = 'bold'
+                }
+
+                tr.appendChild(td2);
+                tr.appendChild(td);
+                tr.appendChild(td3);
+                table.appendChild(tr);
+                promotion.style.border = '2px solid black'
+                zagl.innerHTML = 'Курс акций Россети Ленэнерго';
+            }
+
+            let sum = 0;
+            let detail = document.getElementById('average');
+            let detail2 = document.getElementById('min');
+            let detail3 = document.getElementById('max');
+
+            
+
+            for(let i = 0; i < price.length; i++) {
+                sum += price[i];
+            }
+            
+            let average = sum / price.length;
+            let min = Math.min(...price);
+            let max = Math.max(...price);
+            average = average.toFixed(2) + '₽';
+            detail.innerHTML = `Среднее значение акций: ${average}`;
+            detail2.innerHTML = `Минимальное значение акций: ${min}₽`;
+            detail3.innerHTML = `Максимальное значение акций: ${max}₽`;
+
+            let button = document.getElementById('button');
+            button.style.display = 'none';
+        }
+    </script>
+    <style>
+        .block {
+            margin-left: 500px; 
+            margin-right: 500px; 
+            padding: 20px; 
+            padding-left: 10px; 
+            padding-right: 10px; 
+            margin-top: 30px; 
+        }
+
+        div {
+            text-align: center;
+            color: #000000;
+            font-weight: bold;
+            font-size: 24px; 
+        }
+
+        table {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        td {
+            padding: 15px; 
+            background-color: #ab82bd; 
+        }
+
+        button {
+            height: 70px; 
+            width: 200px; 
+            margin: 10px auto; 
+            display: block;
+            border: 2px solid #8e44ad; 
+            border-radius: 12px; 
+            background: linear-gradient(160deg, #8e44ad, #dcd0e2); 
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 22px; 
+            transition: 0.4s; 
+            margin-top: 10px; 
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
+        }
+
+        button:hover {
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5); 
+            transition: 0.3s;
+            scale: 1.1; 
+        }
+
+        button:active {
+            scale: 0.95; 
+            transition: 0.3s;
+            box-shadow: 0 0 0; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная 7
+    </header>
+    <main>
+        <div class="block" id="block">
+            <button id="button" onclick="showPromotion()">Курс акций</button>
+            <div class="zagl" id="zagl"></div>
+            <table border="1" id="promotion"></table>
+            <div class="text" id="average"></div>
+            <div class="text" id="min"></div>
+            <div class="text" id="max"></div>
+        </div>  
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
+
+

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цеунов Матвей Евгеньевич. Лабораторная работа 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function getWeatherData() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,apparent_temperature&timezone=Asia%2FBangkok';
+            
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                }) 
+                .then(function(json) {
+                    let morningDate = new Date(json.hourly.time[8]);
+                    let morningTime = morningDate.toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit'});
+                    let morningDateStr = morningDate.toLocaleDateString('ru-RU');
+                    let morningTemp = json.hourly.temperature_2m[8];
+                    let morningApparentTemp = json.hourly.apparent_temperature[8];
+                    
+                    let dayDate = new Date(json.hourly.time[12]);
+                    let dayTime = dayDate.toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit'});
+                    let dayTemp = json.hourly.temperature_2m[12];
+                    let dayApparentTemp = json.hourly.apparent_temperature[12];
+                    
+                    let eveningDate = new Date(json.hourly.time[20]);
+                    let eveningTime = eveningDate.toLocaleTimeString('ru-RU', {hour: '2-digit', minute: '2-digit'});
+                    let eveningTemp = json.hourly.temperature_2m[20];
+                    let eveningApparentTemp = json.hourly.apparent_temperature[20];
+                    
+                    document.getElementById('date').textContent = `${morningDateStr}, ${morningTime}`;
+                    document.getElementById('temp').textContent = `${morningTemp > 0 ? '+' : ''}${morningTemp}°C`;
+                    document.getElementById('apparent_temperature').textContent = `Ощущается как ${morningApparentTemp > 0 ? '+' : ''}${morningApparentTemp}°C`;
+                    
+                    document.getElementById('date1').textContent = `${morningDateStr}, ${dayTime}`;
+                    document.getElementById('temp1').textContent = `${dayTemp > 0 ? '+' : ''}${dayTemp}°C`;
+                    document.getElementById('apparent_temperature1').textContent = `Ощущается как ${dayApparentTemp > 0 ? '+' : ''}${dayApparentTemp}°C`;
+                    
+                    document.getElementById('date2').textContent = `${morningDateStr}, ${eveningTime}`;
+                    document.getElementById('temp2').textContent = `${eveningTemp > 0 ? '+' : ''}${eveningTemp}°C`;
+                    document.getElementById('apparent_temperature2').textContent = `Ощущается как ${eveningApparentTemp > 0 ? '+' : ''}${eveningApparentTemp}°C`;
+                    
+                    document.getElementById('divider').classList.remove('hidden');
+                    document.getElementById('weather1').classList.remove('hidden');
+                    document.getElementById('weather2').classList.remove('hidden');
+                    document.getElementById('weather3').classList.remove('hidden');
+                })
+                .catch(function(error) {
+                    console.error('Ошибка при получении данных:', error);
+                    alert('Произошла ошибка при загрузке данных о температуре. Пожалуйста, попробуйте позже.');
+                });
+        }
+    </script>
+    <style>
+        .weather-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .weather-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .weather-subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #6e48aa, #9d50bb);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .weather-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .weather-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .weather-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .weather-time {
+            font-size: 1.5em;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #6e48aa;
+        }
+        
+        .weather-date {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .weather-temp {
+            font-size: 4em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        
+        .weather-feels-like {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .weather-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .weather-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+    </header>
+
+    <main>
+        <div class="weather-header">
+            <h1 class="weather-title">Прогноз температуры в Новосибирске</h1>
+            <p class="weather-subtitle">Актуальные данные о температуре в разное время суток</p>
+            <button class="btn" onclick="getWeatherData()">Получить данные</button>
+        </div>
+        
+        <div class="divider hidden" id="divider"></div>
+        
+        <div class="weather-container">
+            <div class="weather-card hidden" id="weather1">
+                <div class="weather-time">Утро</div>
+                <div class="weather-date" id="date"></div>
+                <div class="weather-temp" id="temp"></div>
+                <div class="weather-feels-like" id="apparent_temperature"></div>
+            </div>
+            
+            <div class="weather-card hidden" id="weather2">
+                <div class="weather-time">День</div>
+                <div class="weather-date" id="date1"></div>
+                <div class="weather-temp" id="temp1"></div>
+                <div class="weather-feels-like" id="apparent_temperature1"></div>
+            </div>
+            
+            <div class="weather-card hidden" id="weather3">
+                <div class="weather-time">Вечер</div>
+                <div class="weather-date" id="date2"></div>
+                <div class="weather-temp" id="temp2"></div>
+                <div class="weather-feels-like" id="apparent_temperature2"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Цеунов Матвей Евгеньевич, ФБИ-31, 2 курс, 2025
+    </footer>
+    
+</body>
+</html>
