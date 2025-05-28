@@ -12,6 +12,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        main {
+            margin-bottom: 85px;
+            color: #2c3e50;
+            font-family: 'Roboto', sans-serif;
+        }
+        .profile-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .counter {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+        }
+        .calculator {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .table-container {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -20,69 +48,92 @@
     
 
     <main>
-        <div id="app">
-            <h1 :title="messageRus">{{ message }}</h1>
-            <p>Счётчик: {{ counter }}</p>
-            <button @click="incCounter" v-if="counter < 10">++</button>
-            <button @click="decCounter" v-if="counter > 0">--</button>
-
-            <hr>
-            <h2>Пользователь:</h2>
-            <div>Имя: {{ user.name }}</div>
-            <div>Возраст: {{ user.age }}</div>
-            <div>Телефон: {{ user.tel }}</div>
+        <div class="app" id="app">
+            <div class="block5">
+                <h1 :title="messageRus" style="font-weight: bold;">{{ message }}</h1>
+                <p class="block">Счётчик: {{ counter }}</p>
+                <button style="width: 3rem; margin: 10px; border: 1px solid black;" @click="incCounter" class="btn btn-success" v-if="counter < 10">+</button>
+                <button style="width: 3rem; border: 1px solid black;" @click="decCounter" class="btn btn-danger" v-if="counter > 0">-</button>
+            </div>
             <hr>
 
-            <div class="card" style="width: 17rem;">
+            <h2 style="font-weight: bold;">Пользователь:</h2>
+            <div class="block4">
+                <div class="name block3">Имя: {{ user.name }}</div>
+                <div class="age block3">Возраст: {{ user.age }}</div>
+                <div class="tel block3">Телефон: {{ user.tel }}</div>
+            </div>
+            <hr>
+
+            <div class="card" style="width: 38rem; margin: 0 auto; border: 3px solid black; border-radius: 10px; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)">
                 <div class="card-body">
-                    <h2 class="card-title">Цветы</h2>
+                    <h2 style="font-weight: bold;">Цветы</h2>
                     <ul class="list-group">
                         <li v-for="(flower, id) in flowers" class="list-group-item">
-                            {{ flower }} <button @click="edit(id, flower)"><i class="bi bi-pen"></i></button>
+                            {{ flower }} <button @click="edit(id, flower)" v-if="flower !== null" class="btn btn-primary"><i class="bi bi-pencil"></i></button>
+                            <button @click="deleteFlower(id)" class="btn btn-danger" v-if="flower !== null" style="margin-left: 10px;">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                            <div class="spinner-border" role="status" v-if="flower === null"></div>
                         </li>
                     </ul>
                 </div>
             </div>
+            <hr>
 
-            <h2>Цветы</h2>
-            <table class="table table-danger">
+            <h2 style="font-weight: bold;">Цветы</h2>
+            <table class="table table-success" style="border: 3px solid black; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)">
                 <thead>
                     <tr>
-                        <th>Название</th>
+                        <th>Название
+                            <button @click="addFlower()" class="btn btn-success" style="margin-left: 10px;">
+                                <i class="bi bi-file-earmark-plus-fill"></i>
+                            </button>
+                        </th>
                         <th>Редактировать</th>
+                        <th>Удалить</th>
                     </tr>
                 </thead>
-                <tr v-for="(flower, id) in flowers"> 
+                <tr v-for="(flower, id) in flowers">
                     <td>
                         <span v-if="flower === null">загружается...</span>
                         <span v-else>{{ flower }}</span>
                     </td>
                     <td>
-                        <button @click="edit(id, flower)" class="btn btn-primary" v-if="flower !== null"><i class="bi bi-pen"></i></button>
+                        <button @click="edit(id, flower)" v-if="flower !== null" class="btn btn-primary">
+                            <i class="bi bi-pencil"></i>
+                        </button>
                         <div class="spinner-border" role="status" v-if="flower === null"></div>
+                    </td>
+                    <td>
+                        <button @click="deleteFlower(id)" class="btn btn-danger" v-if="flower !== null">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </table>
+            <hr>
 
-            <h2>Калькулятор</h2>
-            <div class="row g-5">
+            <h2 style="font-weight: bold;">Калькулятор</h2>
+            <div class="row g-3" style="display: flex; justify-content: center; align-items: center;" >
                 <div class="col-auto">
-                    <input class="form-control" type="number" v-model="a">
+                    <input class="form-control" type="number" v-model="a" style='border: 1px solid black; margin-bottom: 30px; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)'>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" style="margin-bottom: 30px;">
                 +
                 </div>
                 <div class="col-auto">
-                    <input class="form-control" type="number" v-model="b">
+                    <input class="form-control" type="number" v-model="b" style='border: 1px solid black; margin-bottom: 30px; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)'>
                 </div>
                 <div class="col-auto">
-                    <button @click="sum" class="btn btn-primary">=</button>
+                    <button @click="sum" class="btn btn-secondary" style='border: 1px solid black; margin-bottom: 30px; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)'>=</button>
                 </div>
                 <div class="col-auto">
-                    <span class="badge text-bg-primary fs-5">{{ result }}</span>
+                    <span class="badge text-bg-secondary fs-5" style="margin-bottom: 30px; border: 1px solid black; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.493)">{{ result }}</span>
                 </div>
+            </div>
         </div>
-    </main>
+        </main>
 
 
     <footer>
@@ -122,6 +173,18 @@
                         setTimeout(() => {
                             this.flowers[id] = newName;
                         }, 3000);
+                    },
+                deleteFlower(id) {
+                        this.flowers.splice(id,1);
+                },
+                addFlower() { 
+                        let newFlower = prompt('Введите название цветка:');
+                        if (newFlower) {
+                            this.flowers.push(null);
+                            setTimeout(() => {
+                                this.flowers[this.flowers.length - 1] = newFlower;
+                            }, 1000);
+                        }
                     },
                 sum() {
                         this.result = this.a + this.b;
