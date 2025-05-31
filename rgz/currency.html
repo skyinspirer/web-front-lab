@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <title>Южно-Уральский никелевый комбинат - Курс валют</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #003366;
+            color: #fff;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            margin-right: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .menu ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a i {
+            margin-right: 8px;
+        }
+
+        .menu li.active a {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .currency-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .calculator {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .calculator-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .calculator input, .calculator select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            flex-grow: 1;
+            min-width: 100px;
+        }
+        
+        .calculator button {
+            padding: 8px 15px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .calculator button:hover {
+            background-color: #0055aa;
+        }
+        
+        .chart-container {
+            height: 400px;
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .chart-info {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            margin-top: 40px;
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #003366;
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        #back-to-top:hover {
+            background-color: #0055aa;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="image1.jpg" alt="Логотип Южно-Уральского никелевого комбината" class="logo">
+            <h1>Южно-Уральский никелевый комбинат</h1>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> О компании</a></li>
+                <li><a href="news.html"><i class="fas fa-newspaper"></i> Новости</a></li>
+                <li class="active"><a href="currency.html"><i class="fas fa-exchange-alt"></i> Курс валют</a></li>
+                <li><a href="contacts.html"><i class="fas fa-address-book"></i> Контакты</a></li>
+                <li><a href="video.html"><i class="fas fa-video"></i> Видео</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="currency-section">
+            <h2>Курс валют</h2>
+            <p>Актуальный курс Молдавского лея (MDL) к Российскому рублю (RUB) на <span id="current-date"></span></p>
+            
+            <div class="currency-container">
+                <div class="calculator">
+                    <h3>Калькулятор валют</h3>
+                    
+                    <div class="calculator-row">
+                        <input type="number" id="rub-amount" placeholder="Сумма в рублях" value="100">
+                        <span>RUB =</span>
+                        <input type="number" id="mdl-amount" placeholder="Сумма в леях" readonly>
+                        <span>MDL</span>
+                    </div>
+                    
+                    <div class="calculator-row">
+                        <input type="number" id="mdl-amount2" placeholder="Сумма в леях" value="100">
+                        <span>MDL =</span>
+                        <input type="number" id="rub-amount2" placeholder="Сумма в рублях" readonly>
+                        <span>RUB</span>
+                    </div>
+                    
+                    <button onclick="convertCurrency()">Пересчитать</button>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Динамика курса MDL/RUB за последний месяц</h3>
+                    <canvas id="currencyChart"></canvas>
+                    <div class="chart-info" id="chart-info">Нажмите на столбец для просмотра деталей</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Южно-Уральский никелевый комбинат.</p>
+    </footer>
+
+    <div id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        const now = new Date();
+        document.getElementById('current-date').textContent = now.toLocaleDateString('ru-RU', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+        
+        let currentRate = 4.12;
+        
+        function convertCurrency() {
+            const rubAmount = parseFloat(document.getElementById('rub-amount').value);
+            const mdlAmount = parseFloat(document.getElementById('mdl-amount2').value);
+            
+            if (!isNaN(rubAmount)) {
+                document.getElementById('mdl-amount').value = (rubAmount / currentRate).toFixed(2);
+            }
+            
+            if (!isNaN(mdlAmount)) {
+                document.getElementById('rub-amount2').value = (mdlAmount * currentRate).toFixed(2);
+            }
+        }
+        
+        convertCurrency();
+        
+        const dates = [];
+        const rates = [];
+        
+        for (let i = 30; i >= 0; i--) {
+            const date = new Date();
+            date.setDate(date.getDate() - i);
+            dates.push(date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' }));
+            const rate = currentRate * (0.95 + Math.random() * 0.1);
+            rates.push(rate);
+        }
+        
+        const ctx = document.getElementById('currencyChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Курс MDL/RUB',
+                    data: rates,
+                    backgroundColor: 'rgba(0, 51, 102, 0.7)',
+                    borderColor: 'rgba(0, 51, 102, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Курс (RUB за 1 MDL)',
+                            color: '#003366'
+                        },
+                        grid: {
+                            color: 'rgba(0,0,0,0.05)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Дата',
+                            color: '#003366'
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#003366'
+                        }
+                    }
+                },
+                onClick: (e) => {
+                    const activePoints = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+                    if (activePoints.length > 0) {
+                        const firstPoint = activePoints[0];
+                        const label = chart.data.labels[firstPoint.index];
+                        const value = chart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+                        
+                        document.getElementById('chart-info').textContent = 
+                            `Дата: ${label}, Курс: 1 MDL = ${value.toFixed(2)} RUB`;
+                        
+                        chart.data.datasets[0].backgroundColor = chart.data.datasets[0].backgroundColor.map((color, index) => 
+                            index === firstPoint.index ? 'rgba(231, 76, 60, 0.7)' : 'rgba(0, 51, 102, 0.7)');
+                        chart.update();
+                    }
+                }
+            }
+        });
+
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
